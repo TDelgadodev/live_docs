@@ -1,26 +1,14 @@
 /* eslint-disable no-unused-vars */
 declare type SearchParamProps = {
-  params: Record<string, string>;
-  searchParams: Record<string, string | string[] | undefined>;
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-enum AccessRights {
-  RoomWrite = "room:write",
-  RoomRead = "room:read",
-  RoomPresenceWrite = "room:presence:write",
-}
-
-declare type AccessType =
-  | [AccessRights.RoomWrite]
-  | [AccessRights.RoomRead, AccessRights.RoomPresenceWrite];
+declare type AccessType = ["room:write"] | ["room:read", "room:presence:write"];
 
 declare type RoomAccesses = Record<string, AccessType>;
 
-enum UserType {
-  Creator = "creator",
-  Editor = "editor",
-  Viewer = "viewer",
-}
+declare type UserType = "creator" | "editor" | "viewer";
 
 declare type RoomMetadata = {
   creatorId: string;
@@ -50,9 +38,9 @@ declare type ShareDocumentParams = {
 };
 
 declare type UserTypeSelectorParams = {
-  userType: UserType;
+  userType: string;
   setUserType: React.Dispatch<React.SetStateAction<UserType>>;
-  onClickHandler?: (value: UserType) => void;
+  onClickHandler?: (value: string) => void;
 };
 
 declare type ShareDocumentDialogProps = {

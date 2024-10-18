@@ -6,7 +6,7 @@ import {
     RoomProvider,
     ClientSideSuspense,
   } from "@liveblocks/react/suspense";
-import Loader from '@/components/Loader';
+import Loader from '@/components/landing/Loader';
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
   return (
