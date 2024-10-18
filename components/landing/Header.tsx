@@ -2,10 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface HeaderProps {
-  children: React.ReactNode;
-}
-
 const Header = ({ children }: HeaderProps) => {
   return (
     <header className="header">
