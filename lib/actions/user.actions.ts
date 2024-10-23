@@ -27,24 +27,22 @@ export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
   }
 };
 
-export const getDocument = async ({
-  roomId,
-  userId,
-}: {
-  roomId: string;
-  userId: string;
-}) => {
+export const getDocumentUsers = async ({ roomId, currentUser, text }: { roomId: string, currentUser: string, text: string }) => {
   try {
     const room = await liveblocks.getRoom(roomId);
 
-/*     const hasAccess = Object.keys(room.usersAccesses).includes(userId);
+    const users = Object.keys(room.usersAccesses).filter((email) => email !== currentUser);
 
-    if (!hasAccess) {
-      throw new Error("You do not have access to this document");
-    } */
+    if(text.length) {
+      const lowerCaseText = text.toLowerCase();
 
-    return parseStringify(room);
+      const filteredUsers = users.filter((email: string) => email.toLowerCase().includes(lowerCaseText))
+
+      return parseStringify(filteredUsers);
+    }
+
+    return parseStringify(users);
   } catch (error) {
     console.log(`Error fetching document users: ${error}`);
   }
-};
+}

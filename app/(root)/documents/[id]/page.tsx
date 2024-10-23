@@ -1,8 +1,9 @@
 import CollaborativeRoom from "@/components/CollaborativeRoom";
-import { getClerkUsers, getDocument } from "@/lib/actions/user.actions";
+import { getClerkUsers } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs/server";
 import React from "react";
+import { getDocument } from "@/lib/actions/room.actions";
 
 const DocumentPage = async ({ params: { id } }: SearchParamProps) => {
   const clerkUser = await currentUser();
