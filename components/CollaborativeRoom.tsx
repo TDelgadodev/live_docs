@@ -6,11 +6,11 @@ import Loader from "./landing/Loader";
 import { Editor } from "@/components/editor/Editor";
 import Header from "@/components/landing/Header";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import ActiveCollaborators from "./ActiveCollaborators";
+import ActiveCollaborators from "./collaborator/ActiveCollaborators";
 import { Input } from "./ui/input";
 import Image from "next/image";
 import { updateDocument } from "@/lib/actions/room.actions";
-import SharedModal from "./SharedModal";
+import SharedModal from "./collaborator/SharedModal";
 
 const CollaborativeRoom = ({
   roomId,
