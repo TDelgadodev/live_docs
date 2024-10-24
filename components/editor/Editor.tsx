@@ -9,11 +9,21 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
-import { FloatingComposer, FloatingThreads, liveblocksConfig, LiveblocksPlugin, useEditorStatus } from "@liveblocks/react-lexical";
+import React from "react";
+
+import {
+  FloatingComposer,
+  FloatingThreads,
+  liveblocksConfig,
+  LiveblocksPlugin,
+  useEditorStatus,
+} from "@liveblocks/react-lexical";
 import Loader from "../landing/Loader";
-import FloatingToolbar from "./plugins/FloatingToolbarPlugin";
+
+import FloatingToolbarPlugin from "./plugins/FloatingToolbarPlugin";
 import { useThreads } from "@liveblocks/react/suspense";
 import Comments from "../landing/Comments";
+import { DeleteModal } from "../modal/DeleteModal";
 
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will
@@ -48,8 +58,7 @@ export function Editor({
       <div className="editor-container size-full">
         <div className="toolbar-wrapper flex min-w-full justify-between">
           <ToolbarPlugin />
-          {/*           {currentUserType === 'editor' && <DeleteModal  />}
-           */}
+          {currentUserType === "editor" && <DeleteModal roomId={roomId} />}
         </div>
         <div className="editor-wrapper flex flex-col items-center justify-start">
           {status === "not-loaded" || status === "loading" ? (
@@ -63,7 +72,7 @@ export function Editor({
                 placeholder={<Placeholder />}
                 ErrorBoundary={LexicalErrorBoundary}
               />
-              {currentUserType === 'editor' && <FloatingToolbar />}
+              {currentUserType === "editor" && <FloatingToolbarPlugin />}
               <HistoryPlugin />
               <AutoFocusPlugin />
             </div>

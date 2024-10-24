@@ -1,5 +1,6 @@
 import AddDocumentBtn from "@/components/AddDocumentBtn";
 import Header from "@/components/landing/Header";
+import { DeleteModal } from "@/components/modal/DeleteModal";
 import { getDocuments } from "@/lib/actions/room.actions";
 import { dateConverter } from "@/lib/utils";
 import { SignedIn, UserButton } from "@clerk/nextjs";
@@ -56,6 +57,7 @@ export default async function Home() {
                     </p>
                   </div>
                 </Link>
+                <DeleteModal roomId={id} />
               </li>
             ))}
           </ul>
