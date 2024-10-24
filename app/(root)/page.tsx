@@ -1,6 +1,7 @@
 import AddDocumentBtn from "@/components/AddDocumentBtn";
 import Header from "@/components/landing/Header";
 import { DeleteModal } from "@/components/modal/DeleteModal";
+import Notification from "@/components/Notification";
 import { getDocuments } from "@/lib/actions/room.actions";
 import { dateConverter } from "@/lib/utils";
 import { SignedIn, UserButton } from "@clerk/nextjs";
@@ -20,7 +21,7 @@ export default async function Home() {
     <main className="home-container">
       <Header className="sticky left-0 top-0">
         <div className="flex items-center gap-2 lg:gap-4">
-          Notification
+          <Notification />
           <SignedIn>
             <UserButton />
           </SignedIn>
