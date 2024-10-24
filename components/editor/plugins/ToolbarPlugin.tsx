@@ -18,12 +18,12 @@ import {
   FORMAT_TEXT_COMMAND,
   REDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
-  UNDO_COMMAND,
+  UNDO_COMMAND
 } from 'lexical';
 import {
   $createHeadingNode,
   $createQuoteNode,
-  $isHeadingNode,
+  $isHeadingNode
 } from '@lexical/rich-text';
 import { $setBlocksType } from '@lexical/selection';
 import { $findMatchingParent } from '@lexical/utils';
@@ -33,7 +33,7 @@ import {
   useEffect,
   useRef,
   useState,
-  useSyncExternalStore,
+  useSyncExternalStore
 } from 'react';
 
 const LowPriority = 1;
@@ -257,7 +257,7 @@ function useActiveBlock() {
     (onStoreChange: () => void) => {
       return editor.registerUpdateListener(onStoreChange);
     },
-    [editor],
+    [editor]
   );
 
   const getSnapshot = useCallback(() => {

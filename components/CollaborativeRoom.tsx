@@ -23,7 +23,7 @@ const CollaborativeRoom = ({
   const [loading, setLoading] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
 
   const updateTitleHandler = async (
@@ -51,9 +51,7 @@ const CollaborativeRoom = ({
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
-      ) {
+        inputRef.current && containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setEditing(false);
         updateDocument(roomId, documentTitle);
       }
@@ -89,7 +87,7 @@ const CollaborativeRoom = ({
                   placeholder="Enter title"
                   onChange={(e) => setDocumentTitle(e.target.value)}
                   onKeyDown={updateTitleHandler}
-                  disable={!editing}
+                  disabled={!editing}
                   className="document-title-input"
                 />
               ) : (

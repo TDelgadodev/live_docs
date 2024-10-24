@@ -16,7 +16,7 @@ import {
   FloatingThreads,
   liveblocksConfig,
   LiveblocksPlugin,
-  useEditorStatus,
+  useEditorStatus
 } from "@liveblocks/react-lexical";
 import Loader from "../landing/Loader";
 

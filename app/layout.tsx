@@ -8,7 +8,7 @@ import { dark } from "@clerk/themes";
 import Provider from "./Provider";
 
 const fontSans = FontSans({
-  subsets: ["latin"],
+  subsets: ["latin"] as const,
   variable: "--font-sans",
 });
 
